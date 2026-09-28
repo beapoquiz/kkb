@@ -33,3 +33,12 @@ Owner: Bea Juliana Poquiz (github.com/beapoquiz). This is a portfolio project, s
 - Folder layout: `src/lib` (pure logic), `src/store` (Zustand), `src/components` (shared UI), `src/screens` (routes), `src/mascot` (Plutus SVGs), `src/styles`.
 - Names: `PascalCase.tsx` for components, `camelCase.ts` for logic, and tests next to the code as `*.test.ts(x)`.
 - User-facing text is English. The one allowed Taglish easter egg is "All settled! Bayad na lahat 🎉".
+
+## Commands (real scripts, added after Phase 7)
+- `npm run dev`: dev server at http://localhost:5173/kkb/
+- `npm run build` / `npm run preview` (preview serves http://localhost:4173/kkb/)
+- `npm run lint` (zero warnings) · `npm run typecheck` · `npm run format`
+- `npm test` · `npm run test:coverage` (src/lib coverage)
+- `npm run test:e2e`: Playwright smoke + axe checks against the production build (run `npx playwright install chromium` once)
+- `npm run screenshots`: regenerates `docs/screenshots/*.png` and `demo.webm`
+- `npm run assets`: regenerates favicon, PWA icons and the OG image from `<Plutus />`
