@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue: var(--blue);
+  --color-blue-strong: var(--blue-strong);
+  --color-mint-soft: var(--mint-soft);
+  --color-mint-strong: var(--mint-strong);
+  --color-pink-soft: var(--pink-soft);
+  --color-pink-strong: var(--pink-strong);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-lavender: var(--lavender);
+  --color-backdrop: rgb(59 51 80 / 0.35);
+
+  --font-display: 'Fredoka', ui-rounded, system-ui, sans-serif;
+  --font-body: 'Nunito', ui-rounded, system-ui, sans-serif;
+
+  --radius-card: 24px;
+  --radius-input: 16px;
+  --radius-sheet: 32px;
+
+  --shadow-card: 0 4px 16px rgb(59 51 80 / 0.06);
+  --shadow-float: 0 12px 32px rgb(59 51 80 / 0.14);
+
+  --text-display: 40px;
+  --text-display--line-height: 44px;
+  --text-amount: 36px;
+  --text-amount--line-height: 40px;
+  --text-h1: 24px;
+  --text-h1--line-height: 30px;
+  --text-h2: 18px;
+  --text-h2--line-height: 24px;
+  --text-label: 14px;
+  --text-label--line-height: 20px;
+  --text-caption: 13px;
+  --text-caption--line-height: 18px;
+}
+
+@layer base {
+  html {
+    background: var(--cream);
+  }
+  body {
+    @apply bg-cream font-body text-base text-ink antialiased;
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  :focus-visible {
+    outline: 3px solid var(--blue-strong);
+    outline-offset: 2px;
+  }
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility squish {
+  transition:
+    transform 150ms ease-out,
+    box-shadow 150ms ease-out,
+    background-color 150ms ease-out;
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

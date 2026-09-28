@@ -1,0 +1,20 @@
+/* Design tokens: see docs/02-design-system.md. Components use these via Tailwind classes only. */
+:root {
+  --cream: #fff8f0;
+  --surface: #ffffff;
+  --ink: #3b3350;
+  --ink-muted: #6b6280;
+  --line: #efe6dc;
+
+  --blue-soft: #cde9ff;
+  --blue: #7cc4f5;
+  --blue-strong: #2b6fa8;
+
+  --mint-soft: #bdf0d8;
+  --mint-strong: #1e7a52;
+  --pink-soft: #ffc8dd;
+  --pink-strong: #b83a64;
+  --gold: #f5c542;
+  --gold-deep: #d9a21b;
+  --lavender: #d9ccff;
+}
