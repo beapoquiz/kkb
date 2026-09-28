@@ -19,6 +19,7 @@ import { YourHero } from '../../shared/YourHero';
 import { BalanceList } from './BalanceList';
 import { celebrate } from './confetti';
 import { PaidHistory } from './PaidHistory';
+import { SaveSummaryImageButton } from './SummaryImage';
 import { TransferCard } from './TransferCard';
 
 export function SettleTab({ event, onShare }: { event: KkbEvent; onShare: () => void }) {
@@ -122,6 +123,7 @@ export function SettleTab({ event, onShare }: { event: KkbEvent; onShare: () => 
         <CopyButton text={summary} variant="primary">
           Copy summary for group chat
         </CopyButton>
+        <SaveSummaryImageButton event={event} />
         <Button
           variant="secondary"
           block
