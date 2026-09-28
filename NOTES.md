@@ -18,8 +18,8 @@ Running log for the build: decisions, the phase checklist, and the acceptance ch
 - [x] Phase 0: scaffold, CI + deploy workflows
 - [x] Phase 1: domain logic + tests
 - [x] Phase 2: Zustand store
-- [ ] Phase 3: screens
-- [ ] Phase 4: sharing
+- [x] Phase 3: screens
+- [x] Phase 4: sharing
 - [ ] Phase 5: Plutus + polish + sample trip
 - [ ] Phase 6: nice-to-haves (image export, PWA, category chart)
 - [ ] Phase 7: e2e, screenshots, README, final checks
