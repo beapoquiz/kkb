@@ -21,7 +21,10 @@ export function YourHero({
 
   if (owes.length > 0) {
     return (
-      <section className="rounded-card bg-pink-soft/60 p-5 shadow-card" aria-label="What you owe">
+      <section
+        className="rounded-card bg-pink-soft/40 p-5 ring-1 ring-pink-soft shadow-card"
+        aria-label="What you owe"
+      >
         <p className="font-bold text-pink-strong">You owe</p>
         <ul className="mt-1 flex flex-col gap-3">
           {owes.map((t) => {
@@ -53,7 +56,7 @@ export function YourHero({
     const total = getsBack.reduce((s, t) => s + t.amount, 0);
     return (
       <section
-        className="rounded-card bg-mint-soft/70 p-5 shadow-card"
+        className="rounded-card bg-mint-soft/40 p-5 ring-1 ring-mint-soft shadow-card"
         aria-label="What you get back"
       >
         <p className="font-bold text-mint-strong">You'll get back</p>

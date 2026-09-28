@@ -3,8 +3,8 @@ import { formatMoney } from '../lib/money';
 import type { KkbEvent } from '../lib/schema';
 
 const STYLES = {
-  settled: 'bg-mint-soft text-mint-strong',
-  owing: 'bg-pink-soft text-pink-strong',
+  settled: 'bg-mint-soft/40 text-mint-strong ring-1 ring-mint-soft',
+  owing: 'bg-pink-soft/40 text-pink-strong ring-1 ring-pink-soft',
   empty: 'bg-line text-ink-muted',
 };
 

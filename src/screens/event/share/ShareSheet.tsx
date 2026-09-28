@@ -7,7 +7,6 @@ import type { KkbEvent } from '../../../lib/schema';
 import { buildShareUrl, MAX_QR_URL_LENGTH } from '../../../lib/share';
 import { buildSummary } from '../../../lib/summary';
 import { Plutus } from '../../../mascot/Plutus';
-import { downloadBlob, qrPngBlob, qrSvgDataUrl, slugify } from './qr';
 
 export function ShareSheet({
   event,
@@ -34,7 +33,10 @@ function ShareContent({ event }: { event: KkbEvent }) {
   useEffect(() => {
     if (!fitsQr) return;
     let alive = true;
-    void qrSvgDataUrl(url).then((dataUrl) => alive && setQr(dataUrl));
+    // The QR library is only loaded when someone opens the share sheet.
+    void import('./qr')
+      .then(({ qrSvgDataUrl }) => qrSvgDataUrl(url))
+      .then((dataUrl) => alive && setQr(dataUrl));
     return () => {
       alive = false;
     };
@@ -50,6 +52,7 @@ function ShareContent({ event }: { event: KkbEvent }) {
   };
 
   const download = async () => {
+    const { downloadBlob, qrPngBlob, slugify } = await import('./qr');
     const blob = await qrPngBlob(url, `${event.emoji} ${event.name}`);
     if (blob) downloadBlob(blob, `kkb-${slugify(event.name)}-qr.png`);
   };

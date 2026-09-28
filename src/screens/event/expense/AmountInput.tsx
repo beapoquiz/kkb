@@ -32,7 +32,7 @@ export function AmountInput({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           data-autofocus={autoFocus ? true : undefined}
-          className="w-[8ch] min-w-0 border-b-2 border-line bg-transparent text-center text-amount text-ink tabular placeholder:text-ink-muted/60 focus:border-blue-strong focus:outline-none"
+          className="w-[8ch] min-w-0 border-b-2 border-line bg-transparent text-center text-amount text-ink tabular placeholder:text-ink-muted focus:border-blue-strong focus:outline-none"
           style={{ fontSize: 36 }}
         />
       </div>

@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   base: '/kkb/',
   plugins: [react(), tailwindcss()],
+  // The budget that matters is gzip (≤ 250 KB, see NOTES.md); raw size is naturally larger.
+  build: { chunkSizeWarningLimit: 700 },
   test: {
     globals: true,
     environment: 'jsdom',

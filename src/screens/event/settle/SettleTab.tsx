@@ -15,6 +15,7 @@ import { Plutus } from '../../../mascot/Plutus';
 import { useIdentity, VIEWER } from '../../../store/identity';
 import { toast } from '../../../store/toast';
 import { useKkbStore } from '../../../store/useKkbStore';
+import { YourHero } from '../../shared/YourHero';
 import { BalanceList } from './BalanceList';
 import { celebrate } from './confetti';
 import { PaidHistory } from './PaidHistory';
@@ -32,7 +33,7 @@ export function SettleTab({ event, onShare }: { event: KkbEvent; onShare: () => 
   const wasSettled = useRef(settled);
   useEffect(() => {
     // Confetti once per transition to "all settled", not every time the tab opens.
-    if (settled && !wasSettled.current) celebrate();
+    if (settled && !wasSettled.current) void celebrate();
     wasSettled.current = settled;
   }, [settled]);
 
@@ -69,6 +70,10 @@ export function SettleTab({ event, onShare }: { event: KkbEvent; onShare: () => 
           )}
         </div>
       </section>
+
+      {you && !settled && people.has(you) && (
+        <YourHero event={event} personId={you} transfers={transfers} />
+      )}
 
       <section aria-labelledby="balances-title">
         <h2 id="balances-title" className="mb-2 text-h2 font-medium">
