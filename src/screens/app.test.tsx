@@ -81,6 +81,12 @@ describe('KKB app', () => {
     }
     expect(await screen.findByText(/All settled! Bayad na lahat/)).toBeInTheDocument();
     expect(onlyEvent().payments).toHaveLength(4);
+
+    // Undo a payment from the paid history: the transfer comes back.
+    await user.click(screen.getByText('Paid history (4)'));
+    await user.click(screen.getByRole('button', { name: 'Undo: Janna paid Bea ₱2,012.08' }));
+    expect(onlyEvent().payments).toHaveLength(3);
+    expect(await screen.findByRole('button', { name: 'Mark as paid' })).toBeInTheDocument();
   });
 
   it('blocks removing a person who is part of expenses', async () => {

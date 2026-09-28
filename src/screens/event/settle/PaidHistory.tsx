@@ -38,7 +38,7 @@ export function PaidHistory({
                 type="button"
                 onClick={() => onUndo(p.id)}
                 className="squish shrink-0 rounded-full px-3 py-1 font-bold text-blue-strong hover:bg-blue-soft"
-                aria-label={`Undo: ${name(p.from)} paid ${name(p.to)}`}
+                aria-label={`Undo: ${name(p.from)} paid ${name(p.to)} ${formatMoney(p.amount, event.currency)}`}
               >
                 Undo
               </button>
