@@ -111,3 +111,17 @@ test('the phone back button closes a sheet instead of leaving the page', async (
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Baguio Barkada Trip' })).toBeVisible();
 });
+
+test('works offline after the first visit (PWA)', async ({ page, context }) => {
+  await page.goto('./');
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+  });
+  await page.reload(); // now controlled by the service worker
+  await context.setOffline(true);
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'No splits yet' })).toBeVisible();
+  await page.getByRole('button', { name: 'Try a sample trip' }).click();
+  await expect(page.getByRole('heading', { name: 'Baguio Barkada Trip' })).toBeVisible();
+  await context.setOffline(false);
+});
