@@ -5,7 +5,7 @@ const PORT = 4173;
 /** Runs against the production build served under the real /kkb/ base path. */
 export default defineConfig({
   testDir: 'e2e',
-  testIgnore: ['**/screenshots.spec.ts'],
+  testIgnore: ['**/screenshots.spec.ts', '**/demo-video.spec.ts'],
   fullyParallel: true,
   // The main flow runs axe several times; a generous budget avoids flakes on slower machines.
   timeout: 90_000,
