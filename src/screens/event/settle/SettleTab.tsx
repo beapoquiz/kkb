@@ -17,6 +17,7 @@ import { toast } from '../../../store/toast';
 import { useKkbStore } from '../../../store/useKkbStore';
 import { YourHero } from '../../shared/YourHero';
 import { BalanceList } from './BalanceList';
+import { CategoryBreakdown } from './CategoryBreakdown';
 import { celebrate } from './confetti';
 import { PaidHistory } from './PaidHistory';
 import { SaveSummaryImageButton } from './SummaryImage';
@@ -116,6 +117,8 @@ export function SettleTab({ event, onShare }: { event: KkbEvent; onShare: () => 
           </ul>
         </section>
       )}
+
+      <CategoryBreakdown event={event} />
 
       <PaidHistory event={event} onUndo={(id) => removePayment(event.id, id)} />
 
