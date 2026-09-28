@@ -8,13 +8,15 @@ Running log for the build: decisions, the phase checklist, and the acceptance ch
 - **Scaffold:** files were created by hand (no `npm create vite`) so nothing in `docs/` could be touched.
 - **Versions:** latest stable at build time: React 19 (brief says "18+"), Vite 8, TypeScript 6, Tailwind 4 (CSS-first `@theme` config, so tokens live in `src/styles/tokens.css` + `index.css` instead of a `tailwind.config.js`), Zod 4, Zustand 5, react-router-dom 7.
 - **Extra dev deps:** `fast-check` (property tests, named in docs/04), `@axe-core/playwright` (a11y check, named in docs/07), `@types/*`, `@vitest/coverage-v8` (coverage target in docs/07). Runtime: `lucide-react` (icons, allowed in docs/02).
-- **Doc conflicts:** home caption: docs/01 says _"Kanya-Kanyang Bayad · everyone pays their share"_, the build prompt says _"KKB = Kanya-Kanyang Bayad (everyone pays their share)"_. The build prompt's version is used because it explains the acronym to non-Filipino visitors, which is the stated goal.
+- **Doc conflicts:** home caption: docs/01 says _"Kanya-Kanyang Bayad · everyone pays their share"_, the build prompt says _"KKB = Kanya-Kanyang Bayad (everyone pays their share)"_. The numbered doc wins, merged with the acronym so non-Filipino visitors still get it: _"KKB = Kanya-Kanyang Bayad · everyone pays their share"_.
+- **Discount allocation:** docs/04 §3.3 allocates the discount by item subtotal. KKB allocates it by each person's pre-discount total (items + service + tip) instead. With the original rule, rounding could push a share to −₱0.01 when the discount is close to the whole bill; with this rule a share can never go negative (tested with a 100% discount). The sample fixture has no discount, so its numbers are unaffected.
+- **Share format:** inside links, people are referenced by their index in the people array (shorter links, and an out-of-range index is simply invalid). Expense `createdAt` is rebuilt from the date + list position, and payment times are rounded to whole days, as docs/05 asks. `normalizeForShare()` describes exactly what changes, and the round-trip tests compare against it.
 - **Summary format:** docs/01 §4 (more specific) wins over the build prompt example (they only differ in sample numbers).
 
 ## Phase checklist
 
 - [x] Phase 0: scaffold, CI + deploy workflows
-- [ ] Phase 1: domain logic + tests
+- [x] Phase 1: domain logic + tests
 - [ ] Phase 2: Zustand store
 - [ ] Phase 3: screens
 - [ ] Phase 4: sharing
@@ -28,7 +30,8 @@ Running log for the build: decisions, the phase checklist, and the acceptance ch
 
 ## Measurements
 
-(filled in as they are measured)
+- Sample trip share URL (on `https://beapoquiz.github.io/kkb/`): **822 characters** (QR limit 2,000).
+- `src/lib` coverage after Phase 1: 98.5% lines, 88% branches (89 tests).
 
 ## Acceptance checklist (copied from docs/07)
 
