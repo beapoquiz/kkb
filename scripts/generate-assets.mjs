@@ -31,12 +31,20 @@ function plutusInner(mood) {
   return svg.replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
 }
 
-/** Plutus's face and front half peeking in from the bottom-left of a rounded square. */
-function iconSvg({ rounded = true } = {}) {
+/**
+ * Plutus, whole and centered, on a soft glow inside a rounded square. Maskable icons get a
+ * smaller fish so he stays inside the safe zone when the launcher crops to a circle.
+ */
+function iconSvg({ rounded = true, scale = 2.3 } = {}) {
   const r = rounded ? 112 : 0;
+  // Center of the fish in Plutus's own 200×200 viewBox (tail tip to nose, fin to belly).
+  const [cx, cy] = [92, 100];
+  const tx = 256 - cx * scale;
+  const ty = 256 - cy * scale;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="${r}" fill="${BLUE_SOFT}"/>
-  <g transform="translate(-150 70) scale(2.55)">${plutusInner('happy')}</g>
+  <circle cx="${tx + 104 * scale}" cy="${ty + 110 * scale}" r="${66 * scale}" fill="#FFFFFF" opacity="0.55"/>
+  <g transform="translate(${tx} ${ty}) scale(${scale})">${plutusInner('happy')}</g>
 </svg>`;
 }
 
@@ -65,8 +73,8 @@ async function rasterize(svg, size, file) {
 
 await rasterize(iconSvg(), 192, 'public/pwa-192x192.png');
 await rasterize(iconSvg(), 512, 'public/pwa-512x512.png');
-await rasterize(iconSvg({ rounded: false }), 512, 'public/maskable-512x512.png');
-await rasterize(iconSvg({ rounded: false }), 180, 'public/apple-touch-icon.png');
+await rasterize(iconSvg({ rounded: false, scale: 1.85 }), 512, 'public/maskable-512x512.png');
+await rasterize(iconSvg({ rounded: false, scale: 2.1 }), 180, 'public/apple-touch-icon.png');
 
 // Open Graph image, 1200×630.
 await page.setViewportSize({ width: 1200, height: 630 });
